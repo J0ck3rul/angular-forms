@@ -1,12 +1,17 @@
-<form formGroup="selectGroup">
+<div [formGroup]="selectGroup">
   <mat-form-field>
-    <input placeholder="Type a question" matInput type="text" formControlName="label">
+    <input matInput placeholder="Type a question" formControlName="label">
   </mat-form-field>
-
-  <div formArrayName="options">
-    <div *ngFor="let option of options; let i=index">
-        <input placeholder="option {{i}}" formControlName={{option}}>
-    </div>
-
+  <div>
+    Options
   </div>
-</form>
+  <div formArrayName="options">
+    <div *ngFor="let option of options.controls; let i=index">
+      <mat-form-field>
+        <input matInput placeholder="{{i + 1}}" formControlName="{{i}}">
+      </mat-form-field>
+      <button mat-button (click)="delete(i)"> Delete</button>
+    </div>
+  </div>
+  <button mat-button (click)="add()"> Add</button>
+</div>

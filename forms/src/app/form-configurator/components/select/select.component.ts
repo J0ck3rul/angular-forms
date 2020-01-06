@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormGroup, FormControl, FormArray, NG_VALIDATORS } from '@angular/forms';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
 import { SelectGroup } from '../../forms/select.form';
 
@@ -13,7 +13,7 @@ import { SelectGroup } from '../../forms/select.form';
     useExisting: forwardRef(() => SelectComponent)
   },
   {
-    provide: true,
+    provide: NG_VALIDATORS,
     multi: true,
     useExisting: forwardRef(() => SelectComponent)
   }]
@@ -22,14 +22,18 @@ import { SelectGroup } from '../../forms/select.form';
 export class SelectComponent extends CustomControlValueAccessor implements OnInit {
 
   public selectGroup: SelectGroup;
+  ngOnInit(): void {
+  }
 
   constructor() {
     super();
 
     this.selectGroup = new SelectGroup();
-   }
 
-  ngOnInit() {
+    this.selectGroup.valueChanges.subscribe(value => {
+      this.onChange(value);
+      this.onTouched();
+    });
   }
 
   get options(): FormArray {
@@ -37,7 +41,15 @@ export class SelectComponent extends CustomControlValueAccessor implements OnIni
   }
 
   public validate(_: FormControl): any {
-    return this.selectGroup.valid ? null : { form: { valid: false } };
+    return true;
+  }
+
+  public delete(index: number): void {
+    this.options.controls.slice(index, 1);
+  }
+
+  public add(): void {
+    this.options.push(new FormControl(''));
   }
 
 }
