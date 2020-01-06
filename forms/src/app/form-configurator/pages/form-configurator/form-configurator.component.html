@@ -1,0 +1,30 @@
+<div class="form-container" [formGroup]="configuratorForm">
+  <div class="form-array-container" formArrayName="items">
+    <div *ngFor="let item of items.controls; let i=index">
+
+      <div [ngSwitch]="controlTypes[i]">
+        <app-input formControlName="{{i}}" *ngSwitchCase="types.input"> </app-input>
+        <app-select formControlName="{{i}}" *ngSwitchCase="types.select"> </app-select>
+        <app-checkbox formControlName="{{i}}" *ngSwitchCase="types.checkbox"> </app-checkbox>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<button mat-flat-button (click)="addInput()">
+  Add input
+</button>
+
+<button mat-flat-button (click)="addSelect()">
+  Add select
+</button>
+
+<button mat-flat-button (click)="addCheckbox()">
+  Add checkbox
+</button>
+
+
+<button mat-button (click)="submit()">
+  Submit?
+</button>

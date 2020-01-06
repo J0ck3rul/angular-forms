@@ -1,0 +1,12 @@
+<form formGroup="selectGroup">
+  <mat-form-field>
+    <input placeholder="Type a question" matInput type="text" formControlName="label">
+  </mat-form-field>
+
+  <div formArrayName="options">
+    <div *ngFor="let option of options; let i=index">
+        <input placeholder="option {{i}}" formControlName={{option}}>
+    </div>
+
+  </div>
+</form>
