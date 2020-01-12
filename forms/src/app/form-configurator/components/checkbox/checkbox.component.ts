@@ -2,6 +2,7 @@ import { Component, OnInit, forwardRef } from '@angular/core';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { CheckboxFormGroup } from '../../forms/checkbox.form';
+import { Types } from '../../constants/controls-types.enum';
 
 @Component({
   selector: 'app-checkbox',
@@ -25,7 +26,12 @@ export class CheckboxComponent extends CustomControlValueAccessor {
   constructor() {
     super();
 
-    this.checkboxForm = new CheckboxFormGroup();
+    this.checkboxForm = new CheckboxFormGroup(Types.checkbox);
+
+    this.checkboxForm.valueChanges.subscribe(value => {
+      this.onChange(value);
+      this.onTouched();
+    });
   }
 
   public get options(): FormArray {

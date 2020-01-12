@@ -2,6 +2,7 @@ import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
 import { InputFormGroup } from '../../forms/input.form';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '@angular/forms';
+import { Types } from '../../constants/controls-types.enum';
 
 @Component({
   selector: 'app-input',
@@ -26,7 +27,7 @@ export class InputComponent extends CustomControlValueAccessor implements OnInit
 
   constructor() {
     super();
-    this.inputForm = new InputFormGroup();
+    this.inputForm = new InputFormGroup(Types.input);
 
     this.inputForm.valueChanges.subscribe(value => {
       this.onChange(value);

@@ -47,4 +47,9 @@ export class FormConfiguratorComponent implements OnInit {
     this.configuratorForm.addControl();
     this.controlTypes.push(Types.radioButton);
   }
+
+  public addTextarea(): void {
+    this.configuratorForm.addControl();
+    this.controlTypes.push(Types.textarea);
+  }
 }

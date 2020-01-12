@@ -1,6 +1,7 @@
 export enum Types {
-  select,
-  input,
-  checkbox,
-  radioButton
+  select = 'select',
+  input = 'input',
+  checkbox = 'checkbox',
+  radioButton = 'radioButton',
+  textarea = 'textarea'
 }

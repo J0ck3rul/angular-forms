@@ -7,6 +7,7 @@
         <app-select formControlName="{{i}}" *ngSwitchCase="types.select"> </app-select>
         <app-checkbox formControlName="{{i}}" *ngSwitchCase="types.checkbox"> </app-checkbox>
         <app-radio-button formControlName="{{i}}" *ngSwitchCase="types.radioButton"> </app-radio-button>
+        <app-textarea formControlName="{{i}}" *ngSwitchCase="types.textarea"> </app-textarea>
       </div>
 
     </div>
@@ -26,7 +27,11 @@
 </button>
 
 <button mat-flat-button (click)="addRadioButton()">
-  Add checkbox
+  Add radio button
+</button>
+
+<button mat-flat-button (click)="addTextarea()">
+  Add textarea
 </button>
 
 

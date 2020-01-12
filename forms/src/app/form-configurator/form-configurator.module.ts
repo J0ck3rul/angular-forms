@@ -14,6 +14,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
+import { TextareaComponent } from './components/textarea/textarea.component';
 
 const MATERIAL_MODULES: any[] = [
   MatButtonModule,
@@ -24,7 +25,9 @@ const MATERIAL_MODULES: any[] = [
 ];
 
 @NgModule({
-  declarations: [FormConfiguratorComponent, InputComponent, SelectComponent, CheckboxComponent, RadioButtonComponent],
+  declarations: [FormConfiguratorComponent, InputComponent,
+    SelectComponent, CheckboxComponent, RadioButtonComponent,
+    TextareaComponent],
   imports: [
     MATERIAL_MODULES,
     CommonModule,
