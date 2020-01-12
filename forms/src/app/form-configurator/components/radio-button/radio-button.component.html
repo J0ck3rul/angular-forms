@@ -1,0 +1,11 @@
+<form [formGroup]="radioButtonForm">
+
+  <mat-form-field>
+    <input matInput type="text" formControlName="label" placeholder="Enter your text here">
+  </mat-form-field>
+  <br>
+  <mat-slide-toggle [disabled]="true">
+    {{label.value}}
+  </mat-slide-toggle>
+
+</form>

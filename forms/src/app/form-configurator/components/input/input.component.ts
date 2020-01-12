@@ -1,6 +1,6 @@
 import { Component, OnInit, forwardRef, Input } from '@angular/core';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
-import { InputForm } from '../../forms/input.form';
+import { InputFormGroup } from '../../forms/input.form';
 import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '@angular/forms';
 
 @Component({
@@ -20,13 +20,13 @@ import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '@angular/forms';
     }
   ]
 })
-export class InputComponent extends CustomControlValueAccessor implements OnInit  {
+export class InputComponent extends CustomControlValueAccessor implements OnInit {
 
-  public inputForm: InputForm;
+  public inputForm: InputFormGroup;
 
   constructor() {
     super();
-    this.inputForm = new InputForm();
+    this.inputForm = new InputFormGroup();
 
     this.inputForm.valueChanges.subscribe(value => {
       this.onChange(value);

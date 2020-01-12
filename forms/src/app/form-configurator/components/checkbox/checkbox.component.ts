@@ -1,6 +1,7 @@
 import { Component, OnInit, forwardRef } from '@angular/core';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
-import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormGroup } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { CheckboxFormGroup } from '../../forms/checkbox.form';
 
 @Component({
   selector: 'app-checkbox',
@@ -17,19 +18,28 @@ import { NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, FormGroup } from '@angul
     useExisting: forwardRef(() => CheckboxComponent)
   }]
 })
-export class CheckboxComponent extends CustomControlValueAccessor implements OnInit {
+export class CheckboxComponent extends CustomControlValueAccessor {
 
-  public checkboxForm: FormGroup;
+  public checkboxForm: CheckboxFormGroup;
 
   constructor() {
     super();
-   }
 
-   ngOnInit(): void {
-     this.checkboxForm = new FormGroup({});
-   }
-   public validate(_: FormControl): any {
+    this.checkboxForm = new CheckboxFormGroup();
+  }
+
+  public get options(): FormArray {
+    return this.checkboxForm.controls.options as FormArray;
+  }
+
+  public validate(_: FormControl): any {
     return this.checkboxForm.valid ? null : { form: { valid: false } };
   }
 
+  public addOption() {
+    this.options.push(new FormControl(''));
+  }
+  public deleteOption(index: number) {
+    this.options.removeAt(index);
+  }
 }

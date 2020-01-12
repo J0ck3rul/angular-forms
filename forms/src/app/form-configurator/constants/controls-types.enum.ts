@@ -1,5 +1,6 @@
 export enum Types {
   select,
   input,
-  checkbox
-};
+  checkbox,
+  radioButton
+}

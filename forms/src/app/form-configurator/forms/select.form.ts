@@ -1,6 +1,6 @@
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
-export class SelectGroup extends FormGroup {
+export class SelectFormGroup extends FormGroup {
   constructor() {
     super({
       label: new FormControl(''),

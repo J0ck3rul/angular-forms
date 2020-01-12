@@ -6,6 +6,7 @@
         <app-input formControlName="{{i}}" *ngSwitchCase="types.input"> </app-input>
         <app-select formControlName="{{i}}" *ngSwitchCase="types.select"> </app-select>
         <app-checkbox formControlName="{{i}}" *ngSwitchCase="types.checkbox"> </app-checkbox>
+        <app-radio-button formControlName="{{i}}" *ngSwitchCase="types.radioButton"> </app-radio-button>
       </div>
 
     </div>
@@ -21,6 +22,10 @@
 </button>
 
 <button mat-flat-button (click)="addCheckbox()">
+  Add checkbox
+</button>
+
+<button mat-flat-button (click)="addRadioButton()">
   Add checkbox
 </button>
 

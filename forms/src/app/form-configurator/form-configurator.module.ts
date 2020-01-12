@@ -11,15 +11,20 @@ import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { RadioButtonComponent } from './components/radio-button/radio-button.component';
 
 const MATERIAL_MODULES: any[] = [
   MatButtonModule,
   MatInputModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatCheckboxModule,
+  MatIconModule
 ];
 
 @NgModule({
-  declarations: [FormConfiguratorComponent, InputComponent, SelectComponent, CheckboxComponent],
+  declarations: [FormConfiguratorComponent, InputComponent, SelectComponent, CheckboxComponent, RadioButtonComponent],
   imports: [
     MATERIAL_MODULES,
     CommonModule,

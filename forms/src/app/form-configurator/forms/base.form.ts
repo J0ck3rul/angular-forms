@@ -1,6 +1,6 @@
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
-export class BaseForm extends FormGroup {
+export class BaseFormGroup extends FormGroup {
   constructor() {
     super({
       title: new FormControl('', []),
@@ -8,7 +8,7 @@ export class BaseForm extends FormGroup {
     });
   }
 
-  get items(): FormArray   {
+  get items(): FormArray {
     return this.controls.items as FormArray;
   }
 

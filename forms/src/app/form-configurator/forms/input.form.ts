@@ -1,6 +1,6 @@
 import { FormGroup, FormControl } from '@angular/forms';
 
-export class InputForm extends FormGroup {
+export class InputFormGroup extends FormGroup {
   constructor() {
     super({
       label: new FormControl(),

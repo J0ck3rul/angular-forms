@@ -1,1 +1,20 @@
-<p>checkbox works!</p>
+<div [formGroup]="checkboxForm">
+  <mat-form-field>
+    <input matInput type="text" formControlName="label" placeholder="Enter options">
+  </mat-form-field>
+
+  <div class="form-array-container" formArrayName="options">
+    <div *ngFor="let option of options.controls; let i=index">
+      <mat-form-field>
+        <input type="text" matInput formControlName="{{i}}" placeholder='{{i + 1}}.'>
+      </mat-form-field>
+      <button mat-button (click)="deleteOption(i)">
+        <mat-icon aria-hidden="false">cancel</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <button mat-button (click)="addOption()">
+    <mat-icon aria-hidden="false">add</mat-icon>
+  </button>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseForm } from '../../forms/base.form';
+import { BaseFormGroup } from '../../forms/base.form';
 import { FormArray, FormControl } from '@angular/forms';
 import { Types } from '../../constants/controls-types.enum';
 
@@ -10,11 +10,11 @@ import { Types } from '../../constants/controls-types.enum';
 })
 export class FormConfiguratorComponent implements OnInit {
 
-  public configuratorForm: BaseForm;
-  public types = Types ;
+  public configuratorForm: BaseFormGroup;
+  public types = Types;
   public controlTypes: any[] = [];
   constructor() {
-    this.configuratorForm = new BaseForm();
+    this.configuratorForm = new BaseFormGroup();
   }
 
   ngOnInit() {
@@ -41,5 +41,10 @@ export class FormConfiguratorComponent implements OnInit {
   public addCheckbox(): void {
     this.configuratorForm.addControl();
     this.controlTypes.push(Types.checkbox);
+  }
+
+  public addRadioButton(): void {
+    this.configuratorForm.addControl();
+    this.controlTypes.push(Types.radioButton);
   }
 }
