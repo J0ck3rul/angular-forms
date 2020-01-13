@@ -38,6 +38,10 @@ export class InputComponent extends CustomControlValueAccessor implements OnInit
   ngOnInit(): void {
 
   }
+
+  public get label(): FormControl {
+    return this.inputForm.controls.label as FormControl;
+  }
   public validate(_: FormControl): any {
     return this.inputForm.valid ? null : { form: { valid: false } };
   }

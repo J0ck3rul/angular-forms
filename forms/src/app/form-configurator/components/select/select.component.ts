@@ -2,6 +2,7 @@ import { Component, OnInit, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormGroup, FormControl, FormArray, NG_VALIDATORS } from '@angular/forms';
 import { CustomControlValueAccessor } from 'src/app/shared/forms/CustomControlValueAccessor';
 import { SelectFormGroup } from '../../forms/select.form';
+import { Types } from '../../constants/controls-types.enum';
 
 @Component({
   selector: 'app-select',
@@ -28,7 +29,7 @@ export class SelectComponent extends CustomControlValueAccessor implements OnIni
   constructor() {
     super();
 
-    this.selectGroup = new SelectFormGroup();
+    this.selectGroup = new SelectFormGroup(Types.select);
 
     this.selectGroup.valueChanges.subscribe(value => {
       this.onChange(value);
