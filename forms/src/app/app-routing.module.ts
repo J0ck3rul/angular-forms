@@ -10,7 +10,12 @@ const routes: Routes = [{
 {
   path: 'form-configurator',
   loadChildren: () => import('./form-configurator/form-configurator.module').then(opt => opt.FormConfiguratorModule)
-}];
+},
+{
+  path: 'display-form',
+  loadChildren: () => import('./form-render/form-render.module').then(opt => opt.FormRenderModule)
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

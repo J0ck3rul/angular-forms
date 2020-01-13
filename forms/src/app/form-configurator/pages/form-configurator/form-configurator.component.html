@@ -1,6 +1,12 @@
 <div class="form-container" [formGroup]="configuratorForm">
+
+  <mat-form-field class="form-title">
+    <input placeholder="Enter form title here" matInput type="text" formControlName="title">
+  </mat-form-field>
+
+
   <div class="form-array-container" formArrayName="items">
-    <div *ngFor="let item of items.controls; let i=index">
+    <div class = "form-array-item" *ngFor="let item of items.controls; let i=index">
 
       <div [ngSwitch]="controlTypes[i]">
         <app-input formControlName="{{i}}" *ngSwitchCase="types.input"> </app-input>

@@ -15,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { RadioButtonComponent } from './components/radio-button/radio-button.component';
 import { TextareaComponent } from './components/textarea/textarea.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const MATERIAL_MODULES: any[] = [
   MatButtonModule,
@@ -32,7 +33,8 @@ const MATERIAL_MODULES: any[] = [
     MATERIAL_MODULES,
     CommonModule,
     FormConfiguratorRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class FormConfiguratorModule { }
