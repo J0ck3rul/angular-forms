@@ -1,5 +1,39 @@
-<div>
-  <mat-form-field>
-    <mat-label>Legacy form field</mat-label>
-  </mat-form-field>
+<div *ngIf="formConfig !== undefined">
+  {{titleValue}}
+
+  <div *ngFor="let row of formConfig.items; let i=index">
+    <div [ngSwitch]="row.controlType">
+      <div *ngSwitchCase="types.input">
+        <mat-form-field appearance="standard">
+          <mat-label>{{row.label}}</mat-label>
+          <input matInput type="text" placeholder="Enter you answer here">
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="types.select">
+        <mat-form-field>
+          <mat-label>Select one option</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let option of row.options">
+              {{option}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="types.checkbox">
+        <mat-checkbox>Check me!</mat-checkbox>
+      </div>
+      <div *ngSwitchCase="types.radioButton">
+        <mat-slide-toggle>
+          {{row.label}}
+        </mat-slide-toggle>
+
+      </div>
+      <div *ngSwitchCase="types.textarea">
+        <mat-form-field appearance="standard">
+          <mat-label>{{row.label}}</mat-label>
+          <textarea matInput placeholder="Enter your question here"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
 </div>

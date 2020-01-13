@@ -22,7 +22,7 @@ export class FormConfiguratorComponent {
   public submit(): void {
     console.log(this.configuratorForm.value);
     let jsonObj = JSON.parse(JSON.stringify(this.configuratorForm.value))
-    console.log('  -->: jsonObj', jsonObj)
+    console.log('  -->: jsonObj', jsonObj);
 
     this.http.post('http://127.0.0.1:3000', jsonObj).subscribe(value => console.log(value));
   }

@@ -6,7 +6,7 @@
 
 
   <div class="form-array-container" formArrayName="items">
-    <div class = "form-array-item" *ngFor="let item of items.controls; let i=index">
+    <div class="form-array-item" *ngFor="let item of items.controls; let i=index">
 
       <div [ngSwitch]="controlTypes[i]">
         <app-input formControlName="{{i}}" *ngSwitchCase="types.input"> </app-input>
@@ -44,3 +44,5 @@
 <button mat-button (click)="submit()">
   Submit?
 </button>
+
+<a routerLink="/display-form">goto display</a>

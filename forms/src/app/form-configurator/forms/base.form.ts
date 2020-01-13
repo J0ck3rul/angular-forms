@@ -7,9 +7,16 @@ export class BaseFormGroup extends FormGroup {
       items: new FormArray([]),
     });
   }
-
   get items(): FormArray {
     return this.controls.items as FormArray;
+  }
+
+  get title(): FormControl {
+    return this.controls.title as FormControl;
+  }
+  set title(value) {
+
+    this.title.setValue(value);
   }
 
   public addControl(): void {

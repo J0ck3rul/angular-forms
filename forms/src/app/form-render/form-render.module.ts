@@ -10,13 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 
 const MATERIAL_MODULES: any[] = [
   MatButtonModule,
   MatInputModule,
   MatSlideToggleModule,
   MatCheckboxModule,
-  MatIconModule
+  MatIconModule,
+  MatSelectModule
 ];
 
 @NgModule({
