@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseFormGroup } from 'src/app/form-configurator/forms';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormArray } from '@angular/forms';
 import { Types } from 'src/app/form-configurator/constants/controls-types.enum';
 
 @Component({
@@ -18,11 +18,16 @@ export class FormRenderComponent implements OnInit {
     this.form = new BaseFormGroup();
   }
 
+  get formItems(): FormArray {
+    return this.form.controls.formItems as FormArray;
+  }
 
   ngOnInit() {
     this.http.get('http://127.0.0.1:3000').subscribe((value: any) => {
       this.formConfig = value;
       this.titleValue = this.formConfig.title;
+
+
       console.log(this.formConfig);
 
     });
