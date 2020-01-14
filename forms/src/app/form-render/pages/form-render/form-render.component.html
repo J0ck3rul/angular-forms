@@ -2,42 +2,47 @@
   {{titleValue}}
   <div formArrayName="formItems">
 
-      <div class="form-array-item" *ngFor="let item of formItems.controls; let i=index" >
-        <div [ngSwitch]="controlTypes[i]">
-          <div *ngSwitchCase="types.input">
-            <mat-form-field appearance="standard">
-              <mat-label>{{item.label}}</mat-label>
-              <input matInput type="text" placeholder="Enter you answer here">
-            </mat-form-field>
-          </div>
+    <div class="form-array-item" *ngFor="let item of formItems.controls; let i=index">
+      <div [ngSwitch]="controlTypes[i]">
+        <div *ngSwitchCase="types.input">
+          <mat-form-field appearance="standard">
+            <mat-label>{{formConfig.items[i].label}}</mat-label>
+            <input matInput type="text" placeholder="Enter you answer here" formControlName="{{i}}">
+          </mat-form-field>
+        </div>
 
-          <div *ngSwitchCase="types.select">
-            <mat-form-field>
-              <mat-label>Select one option</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let option of item.options">
-                  {{option}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+        <div *ngSwitchCase="types.select">
+          <mat-form-field>
+          <mat-label>{{formConfig.items[i].label}}</mat-label>
+            <mat-select formControlName="{{i}}">
+              <mat-option *ngFor="let option of formConfig.items[i].options" [value]="option">
+                {{option}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-          <div *ngSwitchCase="types.checkbox">
-            <mat-checkbox>Check me!</mat-checkbox>
-          </div>
-          <div *ngSwitchCase="types.radioButton">
-            <mat-slide-toggle>
-              {{item.label}}
-            </mat-slide-toggle>
-          </div>
+        <div *ngSwitchCase="types.checkbox">
+          <mat-checkbox>Check me!</mat-checkbox>
+        </div>
+        <div *ngSwitchCase="types.radioButton">
+          <mat-slide-toggle formControlName="{{i}}">
+            {{formConfig.items[i].label}}
+          </mat-slide-toggle>
+        </div>
 
-          <div *ngSwitchCase="types.textarea">
-            <mat-form-field appearance="standard">
-              <mat-label>{{item.label}}</mat-label>
-              <textarea matInput placeholder="Enter your question here"></textarea>
-            </mat-form-field>
-          </div>
+        <div *ngSwitchCase="types.textarea">
+          <mat-form-field appearance="standard" >
+            <mat-label>{{formConfig.items[i].label}}</mat-label>
+            <textarea matInput placeholder="Enter your answer here" formControlName="{{i}}"></textarea>
+          </mat-form-field>
         </div>
       </div>
+    </div>
   </div>
 </div>
+
+
+<button mat-button [disabled]="!this.form.valid" (click)="submit()">
+  Submitus
+</button>

@@ -5,7 +5,6 @@ export class InputFormGroup extends FormGroup {
     super({
       controlType: new FormControl(type),
       label: new FormControl(),
-      required: new FormControl()
     });
   }
 }

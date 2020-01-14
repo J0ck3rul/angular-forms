@@ -16,6 +16,7 @@ export class FormRenderComponent implements OnInit {
   public formConfig: any;
   public controlTypes:  any[] = [];
   public titleValue: string;
+  public result: any[] = [];
   constructor(private http: HttpClient) {
     this.form = new RenderFormGroup();
   }
@@ -28,20 +29,26 @@ export class FormRenderComponent implements OnInit {
     this.http.get('http://127.0.0.1:3000').subscribe((value: any) => {
       this.formConfig = value;
       this.titleValue = this.formConfig.title;
-    
+
       this.formConfig.items.forEach(element => {
-
         this.controlTypes.push(element.controlType);
-
-        this.formItems.push(new FormGroup({
-          question: new FormControl(element.label),
-          answer: new FormControl('', Validators.required)
-        }));        
+        if(element.controlType === Types.radioButton) {
+          this.formItems.push(new FormControl(''))
+        }
+        else {
+          this.formItems.push(new FormControl('', [Validators.required]));
+        }
       });
-
-      console.log(this.formConfig);
-
     });
   }
 
+  public submit(): void {
+
+    this.form.value.formItems.map((value, index) => {
+      this.result.push({
+        "question": this.formConfig.items[index].label,
+        "answer": value
+      });
+    });
+  }
 }

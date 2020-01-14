@@ -11,7 +11,6 @@
       <div [ngSwitch]="controlTypes[i]">
         <app-input formControlName="{{i}}" *ngSwitchCase="types.input"> </app-input>
         <app-select formControlName="{{i}}" *ngSwitchCase="types.select"> </app-select>
-        <app-checkbox formControlName="{{i}}" *ngSwitchCase="types.checkbox"> </app-checkbox>
         <app-radio-button formControlName="{{i}}" *ngSwitchCase="types.radioButton"> </app-radio-button>
         <app-textarea formControlName="{{i}}" *ngSwitchCase="types.textarea"> </app-textarea>
       </div>
@@ -26,10 +25,6 @@
 
 <button mat-flat-button (click)="addSelect()">
   Add select
-</button>
-
-<button mat-flat-button (click)="addCheckbox()">
-  Add checkbox
 </button>
 
 <button mat-flat-button (click)="addRadioButton()">
