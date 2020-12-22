@@ -1,0 +1,12 @@
+<div [formGroup]="form">
+  <h1>Personal information</h1>
+  <app-personal-information
+    formControlName="personal"
+  ></app-personal-information>
+  <h1>Adress information</h1>
+  <app-address-information></app-address-information>
+  <h1>Optional information</h1>
+  <app-optional-information></app-optional-information>
+
+  <button [disabled]="canSubmit">Submit</button>
+</div>
