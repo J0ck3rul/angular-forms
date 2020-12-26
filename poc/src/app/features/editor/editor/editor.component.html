@@ -1,3 +1,6 @@
-<app-list-view></app-list-view>
+<app-list-view [list]="items$ | async"
+(selectItem)="onSelectItem($event)"
+(deleteItem)="onDeleteItem($event)"
+></app-list-view>
 
 <app-item-edit></app-item-edit>

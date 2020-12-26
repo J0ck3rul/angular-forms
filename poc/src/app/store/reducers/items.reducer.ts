@@ -1,6 +1,8 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
+
 import { Item } from '../../shared/models/item.model';
 import * as ItemActions from '../actions/item.actions';
+
 const initialItems: Item[] = [
   {
     id: 0,
