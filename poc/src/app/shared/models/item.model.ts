@@ -3,5 +3,5 @@ export interface Item {
     name: string,
     complexity: number,
     details: string,
-    completedPercentage: number
+    completedPercentage: string
 }

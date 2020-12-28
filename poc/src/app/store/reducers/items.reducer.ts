@@ -15,7 +15,7 @@ const initialItems: Item[] = [
     id: 1,
     name: 'Second item',
     details: 'dummy details',
-    completedPercentage: 0,
+    completedPercentage: 100,
     complexity: 1,
   },
 ];
@@ -23,7 +23,10 @@ const initialItems: Item[] = [
 const createItem = (items, item) => [...items, item];
 const updateItem = (items, item) =>
   items.map((i) => (i.id === item.id ? item : i));
-const deleteItem = (items, item) => items.filter((i) => i.id !== item.id);
+const deleteItem = (items, item) =>
+  items.filter((i) => {
+    return i.id !== item.id;
+  });
 
 export interface ItemState {
   items: Item[];
@@ -34,6 +37,8 @@ export const initialState: ItemState = {
   items: initialItems,
   selectedItem: null,
 };
+
+
 
 const itemReducer = createReducer(
   initialState,
@@ -52,6 +57,7 @@ const itemReducer = createReducer(
   on(ItemActions.deleteItem, (state, payload) => ({
     ...state,
     items: deleteItem(state.items, payload.item),
+    selectedItem: null,
   }))
 );
 

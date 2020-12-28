@@ -1,10 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { BaseComponent } from './components';
 
 
+const COMPONENTS: any[] = [
+  BaseComponent
+]
 
 @NgModule({
-  declarations: [],
+  declarations: [COMPONENTS],
   imports: [
     CommonModule
   ]

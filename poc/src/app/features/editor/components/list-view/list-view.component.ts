@@ -18,11 +18,9 @@ export class ListViewComponent implements OnInit {
   deleteItem: EventEmitter<Item> = new EventEmitter();
 
   constructor() {}
-
   ngOnInit(): void {
     console.log(this.list);
   }
-
 
   trackItem(index: number, item: Item): number {
     return item.id;

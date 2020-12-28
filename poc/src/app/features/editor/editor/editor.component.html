@@ -1,8 +1,19 @@
-<app-list-view [list]="items$ | async"
-(selectItem)="onSelectItem($event)"
-(deleteItem)="onDeleteItem($event)"
+<h2>All items</h2>
+<app-list-view
+  [list]="items$ | async"
+  (selectItem)="onSelectItem($event)"
+  (deleteItem)="onDeleteItem($event)"
 ></app-list-view>
 
 <app-item-edit
-[item]="selectedItem"
-(updateItem)="onUpdateItem($event)"></app-item-edit>
+  [item]="selectedItem"
+  (updateItem)="onUpdateItem($event)"
+></app-item-edit>
+
+<h2>Completed items</h2>
+
+<app-list-view
+  [list]="completedItems$ | async"
+  (selectItem)="onSelectItem($event)"
+  (deleteItem)="onDeleteItem($event)"
+></app-list-view>

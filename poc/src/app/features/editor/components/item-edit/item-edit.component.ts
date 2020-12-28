@@ -14,8 +14,9 @@ export class ItemEditComponent implements OnInit {
   @Input() set item(value: Item) {
     this.selectedItem = value;
     if (value) {
-      // this.form.reset();
-      this.form.patchValue(value, {emitEvent: false });
+      this.form.patchValue(value, { emitEvent: false });
+    } else {
+      this.form.reset({}, { emitEvent: false });
     }
   }
 
@@ -31,9 +32,7 @@ export class ItemEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.pipe(
-      debounceTime(300),
-    ).subscribe((value) => {
+    this.form.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
       this.updateItem.emit(value);
     });
   }

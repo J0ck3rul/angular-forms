@@ -4,8 +4,14 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Item } from 'src/app/shared/models/item.model';
+import { selectFinishedItems } from 'src/app/store';
 import { deleteItem, selectItem, updateItem } from 'src/app/store/actions/item.actions';
 import { ItemState } from 'src/app/store/reducers/items.reducer';
+
+export enum viewMode {
+  allItems = 'allItems',
+  completedItems = 'completedItems',
+}
 
 @Component({
   selector: 'app-editor',
@@ -14,7 +20,10 @@ import { ItemState } from 'src/app/store/reducers/items.reducer';
 })
 export class EditorComponent implements OnInit {
   items$: Observable<any>;
+  completedItems$: Observable<any>;
   selectedItem: Item;
+  viewModes = viewMode;
+  itemsViewMode: string;
 
   constructor(private store: Store<ItemState>) {}
 
@@ -30,6 +39,13 @@ export class EditorComponent implements OnInit {
         return s;
       })
     );
+
+    this.completedItems$ = this.store.select(selectFinishedItems).pipe(
+      map((s) => {
+        console.log(s);
+        return s;
+      })
+    );
   }
 
   onSelectItem(index): void {
@@ -41,7 +57,7 @@ export class EditorComponent implements OnInit {
   }
 
   onUpdateItem(item: Item): void {
-    this.store.dispatch(updateItem({item}))
+    this.store.dispatch(updateItem({ item }));
   }
 
   private getSelectedItem(state: any): Item {
