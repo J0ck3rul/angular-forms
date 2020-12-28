@@ -20,7 +20,7 @@ export class ListViewComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.list.items);
+    console.log(this.list);
   }
 
 

@@ -3,4 +3,6 @@
 (deleteItem)="onDeleteItem($event)"
 ></app-list-view>
 
-<app-item-edit></app-item-edit>
+<app-item-edit
+[item]="selectedItem"
+(updateItem)="onUpdateItem($event)"></app-item-edit>

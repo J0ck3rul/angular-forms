@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Item } from 'src/app/shared/models/item.model';
-import { deleteItem, selectItem } from 'src/app/store/actions/item.actions';
+import { deleteItem, selectItem, updateItem } from 'src/app/store/actions/item.actions';
 import { ItemState } from 'src/app/store/reducers/items.reducer';
 
 @Component({
@@ -13,15 +13,20 @@ import { ItemState } from 'src/app/store/reducers/items.reducer';
   styleUrls: ['./editor.component.scss'],
 })
 export class EditorComponent implements OnInit {
-  items$: Observable<any[]>;
+  items$: Observable<any>;
+  selectedItem: Item;
 
   constructor(private store: Store<ItemState>) {}
 
   ngOnInit(): void {
+    this.onLoadItems();
+  }
+
+  onLoadItems(): void {
     this.items$ = this.store.pipe(
       select('items'),
-      map((s) => {
-        console.log(s);
+      map((s: any) => {
+        this.selectedItem = this.getSelectedItem(s);
         return s;
       })
     );
@@ -33,5 +38,13 @@ export class EditorComponent implements OnInit {
 
   onDeleteItem(item: Item): void {
     this.store.dispatch(deleteItem({ item }));
+  }
+
+  onUpdateItem(item: Item): void {
+    this.store.dispatch(updateItem({item}))
+  }
+
+  private getSelectedItem(state: any): Item {
+    return state.items[state.selectedItem];
   }
 }

@@ -1,15 +1,16 @@
 <mat-list role="list">
   <mat-list-item
     role="listitem"
-    *ngFor="let item of list.items;let i=index; trackBy: trackItem"
+    *ngFor="let item of list.items; let i = index; trackBy: trackItem"
   >
     {{ item.name }}
-    <button mat-button (click)="onSelectItem(i)">
-      ✅
-    </button>
-    <button mat-button *ngIf="list.selectItem === i" (click)="onDeleteItem($event)">
+    <button mat-button (click)="onSelectItem(i)">✅</button>
+    <button
+      mat-button
+      *ngIf="list.selectedItem === i"
+      (click)="onDeleteItem($event)"
+    >
       ❌
     </button>
   </mat-list-item>
-
 </mat-list>
